@@ -1,0 +1,742 @@
+{
+	"info": {
+		"_postman_id": "aa1b5c83-4067-4a5e-a311-fa23e7bad623",
+		"name": "Expediente-Judicial-Query-Ws Desarrollo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Seguridad",
+			"item": [
+				{
+					"name": "healthcheck",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlAmbiente}}/healthcheck",
+							"host": [
+								"{{urlAmbiente}}"
+							],
+							"path": [
+								"healthcheck"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "authenticate",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "username",
+								"value": "{{usuario}}",
+								"type": "default",
+								"description": "JJnhcLz2XIY62esQI0YThA=="
+							},
+							{
+								"key": "password",
+								"value": "{{clave}}",
+								"type": "default",
+								"description": "JToN5XaTQSk="
+							},
+							{
+								"key": "codigoCliente",
+								"value": "{{cliente}}",
+								"type": "default",
+								"description": "CLEXJUQWS"
+							},
+							{
+								"key": "codigoRol",
+								"value": "{{rol}}",
+								"type": "default",
+								"description": "AEXJU01"
+							}
+						],
+						"url": {
+							"raw": "{{urlAmbiente}}/api/authenticate",
+							"host": [
+								"{{urlAmbiente}}"
+							],
+							"path": [
+								"api",
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "seguridad/refresh",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwtAuthenticate}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlAmbiente}}/seguridad/refresh?token={{jwtAuthenticate}}",
+							"host": [
+								"{{urlAmbiente}}"
+							],
+							"path": [
+								"seguridad",
+								"refresh"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "{{jwtAuthenticate}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "movimientos-interninstitucionales",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwtAuthenticate}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"numeroUnico\":2022066345001217,\r\n    \"numeroIncidente\":0,\r\n    \"auditoria\":{\r\n        \"usuario\": \"\",\r\n        \"nombrePc\": \"S99PW75VLX\",\r\n        \"numeroIp\": \"172.18.13.90\",\r\n        \"direccionMac\": \"00-50-56-87-0D-35\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlAmbiente}}/suprema/movimientos-interinstitucionales",
+							"host": [
+								"{{urlAmbiente}}"
+							],
+							"path": [
+								"suprema",
+								"movimientos-interinstitucionales"
+							],
+							"query": [
+								{
+									"key": "numeroUnico",
+									"value": "2022515965001211",
+									"disabled": true
+								},
+								{
+									"key": "numeroIncidente",
+									"value": "0",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "hitos-expediente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwtAuthenticate}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"numeroUnico\":2022066345001217,\r\n    \"numeroIncidente\":0,\r\n    \"flagIndicador\":\"S\",\r\n    \"auditoria\":{\r\n        \"usuario\": \"USU_CEJSUPREMA\",\r\n        \"nombrePc\": \"S99PW75VLX\",\r\n        \"numeroIp\": \"172.18.13.90\",\r\n        \"direccionMac\": \"00-50-56-87-0D-35\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlAmbiente}}/suprema/hitos-expediente",
+							"host": [
+								"{{urlAmbiente}}"
+							],
+							"path": [
+								"suprema",
+								"hitos-expediente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "lista-resumen-expediente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwtAuthenticate}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"codigoInstancia\": \"101\",\r\n    \"codigoDistrito\": \"50\",\r\n    \"codigoProvincia\": \"01\",\r\n    \"codigoMotivoIngreso\": \"625\",\r\n    \"anioExpediente\": \"3022\",\r\n    \"numeroExpedienteSala\": 131,\r\n    \"anioProceso\": \"%\",\r\n    \"numeroExpedienteProceso\": 0,\r\n    \"codigoDistritoProceso\": \"%\",\r\n    \"apellidoPaterno\": \"%\",\r\n    \"apellidoMaterno\": \"%\",\r\n    \"nombres\": \"%\",\r\n    \"auditoria\":{\r\n        \"usuario\": \"USU_CEJSUPREMA\",\r\n        \"nombrePc\": \"S99PW75VLX\",\r\n        \"numeroIp\": \"172.18.13.90\",\r\n        \"direccionMac\": \"00-50-56-87-0D-35\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlAmbiente}}/suprema/lista-resumen-expediente",
+							"host": [
+								"{{urlAmbiente}}"
+							],
+							"path": [
+								"suprema",
+								"lista-resumen-expediente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "detalle-suprema",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwtAuthenticate}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"numeroUnico\":2022066345001217,\r\n    \"numeroIncidente\":0,\r\n    \"auditoria\":{\r\n        \"usuario\": \"USU_CEJSUPREMA\",\r\n        \"nombrePc\": \"S99PW75VLX\",\r\n        \"numeroIp\": \"172.18.13.90\",\r\n        \"direccionMac\": \"00-50-56-87-0D-35\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlAmbiente}}/suprema/detalle-suprema",
+							"host": [
+								"{{urlAmbiente}}"
+							],
+							"path": [
+								"suprema",
+								"detalle-suprema"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "detalle-partes",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwtAuthenticate}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"numeroUnico\":2022066345001217,\r\n    \"numeroIncidente\":0,\r\n    \"auditoria\":{\r\n        \"usuario\": \"USU_CEJSUPREMA\",\r\n        \"nombrePc\": \"S99PW75VLX\",\r\n        \"numeroIp\": \"172.18.13.90\",\r\n        \"direccionMac\": \"00-50-56-87-0D-35\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlAmbiente}}/suprema/detalle-partes",
+							"host": [
+								"{{urlAmbiente}}"
+							],
+							"path": [
+								"suprema",
+								"detalle-partes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "seguimiento-expediente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwtAuthenticate}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"numeroUnico\":2022066345001217,\r\n    \"numeroIncidente\":0,\r\n    \"auditoria\":{\r\n        \"usuario\": \"USU_CEJSUPREMA\",\r\n        \"nombrePc\": \"S99PW75VLX\",\r\n        \"numeroIp\": \"172.18.13.90\",\r\n        \"direccionMac\": \"00-50-56-87-0D-35\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlAmbiente}}/suprema/seguimiento-expediente",
+							"host": [
+								"{{urlAmbiente}}"
+							],
+							"path": [
+								"suprema",
+								"seguimiento-expediente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "notificacion-expediente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwtAuthenticate}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"numeroUnico\":2000000045001217,\r\n    \"numeroIncidente\":0,\r\n    \"fechaIngreso\":\"2013-04-18 12:25:01.263\",\r\n    \"fechaIngresoActo\":\"2013-04-19 10:09:32.983\",\r\n    \"auditoria\":{\r\n        \"usuario\": \"USU_CEJSUPREMA\",\r\n        \"nombrePc\": \"S99PW75VLX\",\r\n        \"numeroIp\": \"172.18.13.90\",\r\n        \"direccionMac\": \"00-50-56-87-0D-35\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlAmbiente}}/suprema/notificacion-expediente",
+							"host": [
+								"{{urlAmbiente}}"
+							],
+							"path": [
+								"suprema",
+								"notificacion-expediente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "vocal-ponente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwtAuthenticate}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"numeroUnico\":2022066345001217,\r\n    \"numeroIncidente\":0,\r\n    \"auditoria\":{\r\n        \"usuario\": \"USU_CEJSUPREMA\",\r\n        \"nombrePc\": \"S99PW75VLX\",\r\n        \"numeroIp\": \"172.18.13.90\",\r\n        \"direccionMac\": \"00-50-56-87-0D-35\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlAmbiente}}/suprema/vocal-ponente",
+							"host": [
+								"{{urlAmbiente}}"
+							],
+							"path": [
+								"suprema",
+								"vocal-ponente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtener-resolucion",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwtAuthenticate}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"numeroUnico\":2022406315001211,\r\n    \"numeroIncidente\":0,\r\n    \"fechaDescargo\":\"2024-05-31 08:52:16.353\",\r\n    \"auditoria\":{\r\n        \"usuario\": \"USU_CEJSUPREMA\",\r\n        \"nombrePc\": \"S99PW75VLX\",\r\n        \"numeroIp\": \"172.18.13.90\",\r\n        \"direccionMac\": \"00-50-56-87-0D-35\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlAmbiente}}/suprema/obtener-resolucion",
+							"host": [
+								"{{urlAmbiente}}"
+							],
+							"path": [
+								"suprema",
+								"obtener-resolucion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "vista-causa-expediente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwtAuthenticate}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"numeroUnico\":2022066345001217,\r\n    \"numeroIncidente\":0,\r\n    \"auditoria\":{\r\n        \"usuario\": \"USU_CEJSUPREMA\",\r\n        \"nombrePc\": \"S99PW75VLX\",\r\n        \"numeroIp\": \"172.18.13.90\",\r\n        \"direccionMac\": \"00-50-56-87-0D-35\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlAmbiente}}/suprema/vista-causa-expediente",
+							"host": [
+								"{{urlAmbiente}}"
+							],
+							"path": [
+								"suprema",
+								"vista-causa-expediente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "link-ejecutoria",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwtAuthenticate}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"numeroUnico\":2022406315001211,\r\n    \"numeroIncidente\":0,\r\n    \"fechaDescargo\":\"2024-05-31 08:52:16.353\",\r\n    \"auditoria\":{\r\n        \"usuario\": \"USU_CEJSUPREMA\",\r\n        \"nombrePc\": \"S99PW75VLX\",\r\n        \"numeroIp\": \"172.18.13.90\",\r\n        \"direccionMac\": \"00-50-56-87-0D-35\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlAmbiente}}/suprema/link-ejecutoria",
+							"host": [
+								"{{urlAmbiente}}"
+							],
+							"path": [
+								"suprema",
+								"link-ejecutoria"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "lista-ejecutoria",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwtAuthenticate}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"numeroUnico\":2022066345001217,\r\n    \"numeroIncidente\":0,\r\n    \"auditoria\":{\r\n        \"usuario\": \"USU_CEJSUPREMA\",\r\n        \"nombrePc\": \"S99PW75VLX\",\r\n        \"numeroIp\": \"172.18.13.90\",\r\n        \"direccionMac\": \"00-50-56-87-0D-35\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlAmbiente}}/suprema/lista-ejecutoria",
+							"host": [
+								"{{urlAmbiente}}"
+							],
+							"path": [
+								"suprema",
+								"lista-ejecutoria"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"const moment = require('moment')",
+					"const baseApi = \"expedientes-judiciales-query-ws\"",
+					"var operacion = ((request.url.split('?'))[0]).split(baseApi)[1];",
+					"",
+					"if(operacion!=='/healthcheck' && operacion!=='/api/authenticate' && operacion!=='/seguridad/refresh'){",
+					"    let hayLoNecesario = (_.has(pm.collectionVariables.toObject(), 'jwtLogin') || ",
+					"        _.has(pm.collectionVariables.toObject(), 'refreshToken') || _.has(pm.collectionVariables.toObject(), 'expiredToken'));",
+					"    console.log(\"hay lo necesario\"+ hayLoNecesario);",
+					"    if(!hayLoNecesario || moment().valueOf() >= pm.collectionVariables.get('refreshToken')){",
+					"        console.log('Token nuevo.');",
+					"        //authenticate",
+					"        const requestAuthenticate = {",
+					"            url : pm.collectionVariables.get('urlAuthenticate'),",
+					"            method: 'POST',",
+					"            header: {",
+					"                'Content-Type': 'application/json',",
+					"                'username': pm.collectionVariables.get('usuario'),",
+					"                'password': pm.collectionVariables.get('clave'),",
+					"                'codigoCliente': pm.collectionVariables.get('cliente'),",
+					"                'codigoRol': pm.collectionVariables.get('rol')",
+					"            },",
+					"            body: {",
+					"            }",
+					"        }",
+					"        pm.sendRequest(requestAuthenticate, function (err, response) {",
+					"            if(err===null){",
+					"                console.log('Token Authenticate : ' + response.json().token);",
+					"                console.log('Token Authenticate : ' + response.code);",
+					"                if(response.code === 200 && response.json()!==null){",
+					"                    pm.collectionVariables.set('jwtAuthenticate',response.json().token);",
+					"                    ",
+					"                }else",
+					"                    pm.collectionVariables.set('jwtAuthenticate',null); ",
+					"            }",
+					"        }); ",
+					"    }else if(moment().valueOf() > pm.collectionVariables.get('expiredToken') && moment().valueOf() < pm.collectionVariables.get('refreshToken')){",
+					"        console.log('Token refresh');",
+					"        const requestRefresh = {",
+					"            url : pm.collectionVariables.get('urlRefresh')+'?token='+pm.collectionVariables.get('jwtAuthenticate'),",
+					"            method: 'GET',",
+					"            header: {",
+					"                'Content-Type': 'application/json',",
+					"                'Authorization': 'Bearer ' + pm.collectionVariables.get('jwtAuthenticate')",
+					"            },",
+					"            body: {",
+					"            }",
+					"        }",
+					"        pm.sendRequest(requestRefresh, function (err, response) {",
+					"            if(err===null){",
+					"                if(response.code === 200 && response.json()!==null && response.json().codigo === '0000'){",
+					"                    const vexp=pm.collectionVariables.get('texps'),vref=parseInt(pm.collectionVariables.get('texps'))+parseInt(pm.collectionVariables.get('trefs'));",
+					"                    pm.collectionVariables.set('jwtAuthenticate',response.json().data.token);",
+					"                    pm.collectionVariables.set('expiredToken',moment().add(vexp, 's').valueOf());",
+					"                    pm.collectionVariables.set('refreshToken',moment().add(vref, 's').valueOf());",
+					"                }else{",
+					"                    pm.collectionVariables.set('expiredToken',0);",
+					"                    pm.collectionVariables.set('refreshToken',0);",
+					"                    console.error('Ocurrio un error al refrescar token. '+response.json().codigo+': '+response.json().descripcion)",
+					"                }",
+					"            }",
+					"        });",
+					"    }else{",
+					"        console.log('Token aún válido.');",
+					"    }",
+					"}"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "urlAmbiente",
+			"value": "http://172.18.13.173:8193/expedientes-judiciales-query-ws",
+			"type": "default"
+		},
+		{
+			"key": "jwtAuthenticate",
+			"value": "",
+			"type": "default",
+			"disabled": true
+		},
+		{
+			"key": "usuario",
+			"value": "JJnhcLz2XIY62esQI0YThA==",
+			"type": "default"
+		},
+		{
+			"key": "clave",
+			"value": "JToN5XaTQSk=",
+			"type": "default"
+		},
+		{
+			"key": "cliente",
+			"value": "CLEXJUQWS",
+			"type": "default"
+		},
+		{
+			"key": "rol",
+			"value": "AEXJU01",
+			"type": "default"
+		},
+		{
+			"key": "urlAuthenticate",
+			"value": "http://172.18.13.173:8193/expedientes-judiciales-query-ws/api/authenticate",
+			"type": "default"
+		},
+		{
+			"key": "urlLogin",
+			"value": "http://127.0.0.1:8082/servicios-externos-api/admin/login",
+			"type": "default",
+			"disabled": true
+		},
+		{
+			"key": "usuarioLogin",
+			"value": "ADMIN",
+			"type": "default",
+			"disabled": true
+		},
+		{
+			"key": "passwordLogin",
+			"value": "123456",
+			"type": "default",
+			"disabled": true
+		},
+		{
+			"key": "texps",
+			"value": "300",
+			"type": "default"
+		},
+		{
+			"key": "trefs",
+			"value": "600",
+			"type": "default"
+		},
+		{
+			"key": "jwtLogin",
+			"value": "",
+			"type": "default",
+			"disabled": true
+		},
+		{
+			"key": "expiredToken",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "refreshToken",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "urlRefresh",
+			"value": "http://172.18.13.173:8193/expedientes-judiciales-query-wsi/seguridad/refresh",
+			"type": "default"
+		},
+		{
+			"key": "jwtAuthenticate",
+			"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJzZWN1cmUtYXBpIiwiYXVkIjoic2VjdXJlLWFwcCIsInN1YiI6IlVTUl9DTEVYSlVRV1MiLCJleHAiOjE3MjA3MDMyODMsInJvbHMiOlsiQUVYSlUwMSJdLCJyb2xTZWxlY2Npb25hZG8iOiJBRVhKVTAxIiwidXN1YXJpbyI6IlVTUl9DTEVYSlVRV1MiLCJyZW1vdGVJcCI6IjE3Mi4zNC4xMi4xNzgiLCJsaW1pdCI6MTcyMDcwMzQ2MzYxOX0.G1CJGnz8TMizIK6bSZ3_TtMHj1prV-Om70oHR6IBCQp27DpEQThpXhO6G7_k6jP6Hvl99SFPKyw8KGohZq2Nmg"
+		}
+	]
+}
